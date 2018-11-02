@@ -112,3 +112,18 @@ vertical-align: middle;
   margin: 0px;
   border-color: white;
 }
+
+.deleteMember_New
+{
+ background-image: url(../Images/Delete-2.png);
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  resize: both;
+  align-content: center;
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  border-color: white;
+}
