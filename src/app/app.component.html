@@ -1,0 +1,49 @@
+<head>
+    <meta name="google-signin-client_id" content="732707266072-h40amplfv2g10oue3sn3eogq0j22f879.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+    </script>
+</head>
+
+<!-- app.component.html -->
+<ul>
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/products"> Products </a> </li>
+    <li><a routerLink="/groups"> Groups </a>
+        <li><a routerLink="/groupDetails"> My Groups  </a></li>
+        <li><a routerLink="/plans"> Plans </a></li>
+        <li><a routerLink="/memberdetails/1"> MemberDetails  </a></li>
+        <li style="float:right;vertical-align: middle" ><div class="g-signin2" style="display:inline;vertical-align: middle" data-onsuccess="onSignIn"></div></li>
+        <li style="float:right"><a href="#about">About</a></li>
+        <!--<li style="float:right"><a>Total Groups ( {{ totalGroups }} )</a></li>-->
+</ul>
+
+<div class="mainheader-container">
+    <div style="text-align:center;">
+        <table>
+            <tr>
+                <td><span class="mainlogo"></span></td>
+                <td><span class="mainheader"> {{title}}!!</span></td>
+            </tr>
+        </table>
+    </div>
+    <hr class="hline">
+
+
+
+    <!--
+    <br> &nbsp; &nbsp; || &nbsp; &nbsp;
+    <a routerLink="/inventions"> Inventions </a> &nbsp; &nbsp; || &nbsp; &nbsp;<a routerLink="/products"> Products </a> &nbsp;
+    &nbsp;|| &nbsp; &nbsp;<a routerLink="/groups"> Groups </a>
+    <hr>-->
+    <!-- <app-inventions> </app-inventions> -->
+    <router-outlet></router-outlet>
+
+</div>

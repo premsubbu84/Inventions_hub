@@ -1,0 +1,85 @@
+<div class="invention-creator">
+
+  <div class="div-group">
+    <h3>You are currently working on Group : {{ workingGroup.groupName }}</h3>
+  </div>
+  <br>
+  <div class="invention-creator">
+    <table style="width: 100%">
+      <tr>
+        <td style="width:40%">
+          <div class="div-group">
+            <label for="name" class="label-margin">Member Name :</label>
+            <input [(ngModel)]="memberNameModel" placeholder="enter member name" class="form-control">
+          </div>
+          <br>
+          <div class="div-group">
+            <label for="address" class="label-margin">Member Age :</label>
+            <input [(ngModel)]="memberAgeModel" placeholder="enter member age " class="form-control">
+          </div>
+          <br>
+          <div class="div-group">
+            <label for="address" class="label-margin">Member Address :</label>
+            <input [(ngModel)]="memberAddressModel" placeholder="enter member address " class="form-control">
+          </div>
+          <br>
+          <div class="div-group">
+            <label for="zipcode" class="label-margin">ZipCode :</label>
+            <input [(ngModel)]="memberZipcodeModel" placeholder="zipcode" class="form-control">
+          </div>
+        </td>
+        <td style="width:60%">
+          <div class="panel-container">
+            <div class="panel-detailstop">
+              Members List
+            </div>
+            <div class="panel-detailscontent">
+              <div *ngFor="let j of memberFromAPI">
+                <div class="div-group" style="background-color: #a2d0f9; margin: 2px">
+                  <div style="width:80%;margin:10px"><span ngbTooltip="{{ j.memberName }} , Age : {{ j.memberAge }} ">{{ j.memberName }}</span></div>
+                  <div style="width:20%;text-align:right">
+
+                    <span ngbTooltip="Edit Member">
+                                    <button class="btn btn-sm btn-outline-primary" (click)="editMember(j.memberId,0)" style="border-color: #a2d0f9;background-color:#a2d0f9;color:white"> 
+                                    <span class="editMember"></span>
+                    </button>
+
+                    </span>
+
+
+                    <span ngbTooltip="Remove Member">
+                                    <button class="btn btn-sm btn-outline-primary" (click)="editMember(j.memberId,1)" style="border-color: #a2d0f9;background-color:#a2d0f9;color:white"> 
+                                    <span class="deleteMember"></span>
+                    </button>
+
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="div-group">
+            <button class="btn btn-primary" (click)="createMember(memberIdModel)" style="margin-left:200px"> Save Member </button>
+            <div *ngIf="memberIdModel != '';then showAddPlanTemplate; else hideAddPlanTemplate"></div>
+            <ng-template #showAddPlanTemplate>
+              <!--<button class="btn btn-primary" routerLink="/memberdetails/{{ memberIdModel }}" style="margin-left:200px"> Manage Member Plans </button>-->
+              <button class="btn btn-primary" [routerLink]="['/memberdetails/',memberIdModel, workingGroup.groupId]" style="margin-left:200px"> Manage Member Plans </button>
+            </ng-template>
+            <ng-template #hideAddPlanTemplate>
+              <button class="btn btn-primary" routerLink="/memberdetails/{{ memberIdModel }}" style="margin-left:200px" disabled="disabled"> Manage Member Plans </button>
+            </ng-template>
+            <!--<button class="btn btn-primary" (click)="createGroup(groupIdModel)" style="margin-left:50px"> Save Group & Add Members </button>-->
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+</div>

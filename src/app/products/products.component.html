@@ -1,0 +1,43 @@
+<div class="invention-creator">
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Dental</b></ng-template>
+      <ng-template ngbTabContent>
+        <div class="row" style="margin:50px;margin-left:5px;width:22%">
+          <div class="col text-left">Select Dental Product : </div>
+          <div class="col text-left">
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="ddDentalProductItem" ngbDropdownToggle>{{selectedDentalProduct}}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" *ngFor="let dentalItem of dentalProductItemList" (click)="ChangeDentalOrder(dentalItem.ProductItemName, dentalItem.ProductItemID)">{{ dentalItem.ProductItemName }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Vision</b></ng-template>
+      <ng-template ngbTabContent>
+        <div class="row" style="margin:50px;margin-left:5px;width:22%">
+          <div class="col text-left">Select Vision Product : </div>
+          <div class="col text-left">
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="ddVisionProductItem" ngbDropdownToggle>{{selectedVisionProduct}}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" *ngFor="let visionItem of visionProductItemList" (click)="ChangeVisionOrder(visionItem.ProductItemName, visionItem.ProductItemID)">{{ visionItem.ProductItemName }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+<hr>
+<div class="row">
+<div class="col">
+     <button class="btn btn-primary" (click)="updateParent()" style="margin-left:200px"> Save </button>
+     <button class="btn btn-primary" routerLink="/groups" style="margin-left:200px"> Cancel </button>
+</div>

@@ -1,0 +1,64 @@
+<!-- bind data using curly braces to the data in app.component.ts -->
+
+<!-- comment our the data related to single invention we don't need it because 
+    we're using array now  -->
+<!-- 
+<h2> {{ invention.name }} </h2>
+<h3> {{ invention.inventor }} </h3>
+<h3> {{ invention.year }} </h3>
+
+-->
+
+<!-- use *ngFor to iterate through array of inventions and print information about them -->
+
+
+
+<div *ngFor="let i of inventions">
+    <div class="invention">
+        <span> <b> Name: </b>  {{ i.name }}  || </span>
+        <span>  <b> Inventor: </b>  {{ i.inventor }}  || </span>
+        <span>  <b> Year: </b> {{ i.year }}  </span>
+        <span> <button class="btn btn-primary" (click)="details(i.id)"> details </button> </span>
+    </div>
+</div>
+
+
+
+
+
+<!--  add new inventions -->
+
+<hr>
+
+
+<!-- Let the user enter information and display the same side by side -->
+
+<!-- <label> {{ nameModel }} </label> -->
+<div class="invention-creator">
+    <div>
+        <input [(ngModel)]="nameModel" placeholder="enter name" class="form-control">
+    </div>
+    <hr>
+    <!-- <label> {{ inventorModel }} </label> -->
+    <div>
+        <input type="text" [(ngModel)]="inventorModel" placeholder="enter inventor " class="form-control">
+    </div>
+    <hr>
+    <!-- <label> {{ yearModel }} </label> -->
+    <div>
+        <input [(ngModel)]="yearModel" placeholder="year" class="form-control">
+    </div>
+    <hr>
+    <div>
+        <textarea type="textarea" rows="4" cols="20" [(ngModel)]="detailsModel" placeholder="details" class="form-control">
+        </textarea>
+    </div>
+    <br>
+
+    <!-- call the createInvention() function from component on click of button -->
+    <!-- note the use of parenthesis for the click event -->
+    <button class="btn btn-primary" (click)="createInvention()"> create invention </button>
+
+</div>
+
+

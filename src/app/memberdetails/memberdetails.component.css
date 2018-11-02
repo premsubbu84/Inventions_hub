@@ -1,0 +1,14 @@
+.label-margin-left{
+    margin: 3px;
+    width:150px;
+    align-content: left;
+    margin-left: 10px;
+}
+
+.label-margin-right{
+    margin: 3px;
+    margin-right: 10px;
+    width:150px;
+    align-content: right;
+    font-weight: bold;
+}

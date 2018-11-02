@@ -1,0 +1,113 @@
+<!-- <label> {{ nameModel }} </label> -->
+<div class="invention-creator">
+
+    <div class="div-group">
+        <label for="name" class="label-margin">Group Name :</label>
+        <input [(ngModel)]="groupNameModel" placeholder="enter group name" class="form-control">
+    </div>
+    <br>
+    <div class="div-group">
+        <label for="address" class="label-margin">Group Address :</label>
+        <input [(ngModel)]="groupAddressModel" placeholder="enter group address " class="form-control">
+    </div>
+    <br>
+    <div class="div-group">
+        <label for="zipcode" class="label-margin">ZipCode :</label>
+        <input [(ngModel)]="groupZipCodeModel" placeholder="zipcode" class="form-control">
+    </div>
+    <br>
+    <div class="div-group">
+        <button class="btn btn-primary" (click)="createGroup(groupIdModel,0)" style="margin-left:200px"> Save Group
+        </button>
+        <button class="btn btn-primary" (click)="createGroup(groupIdModel,1)" style="margin-left:50px"> Save Group &
+            Add Members </button>
+    </div>
+    <hr>
+</div>
+
+
+<ng-container *ngFor="let g of groups">
+        <div *ngIf="g.groupId == 1 then show1; else show2"></div>
+        
+</ng-container>
+<ng-template #show1>
+    "This is show1"
+</ng-template>
+<ng-template #show2>
+    "This is show2"
+</ng-template>
+
+
+<div *ngIf="groups.length > 0;then showGroupsTemplate; else showGroupsEmptyTemplate"></div>
+
+<ng-template #showGroupsEmptyTemplate>
+    <div class="panel-container">
+        <div class="panel-detailstop-empty">
+            Group details
+        </div>
+        <div class="panel-detailscontent">
+            Sorry .. Have you not created groups yet ?
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #showGroupsTemplate>
+    <div class="panel-container">
+        <div class="panel-detailstop">
+            Group details
+        </div>
+        <div class="panel-detailscontent">
+            <ngb-accordion #acc="ngbAccordion">
+                <div *ngFor="let j of groups">
+
+                    <ngb-panel id={{j.groupId}} ngbPanelTitle="btn-sm">
+                        <ng-template ngbPanelTitle>
+                            <button class="btn btn-sm">{{ j.groupName }}</button>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="div-group" style="width:100%;margin:0px;padding:0px">
+                                <div style="width:80%">
+                                    <span> <b> Name: </b> {{ j.groupName }} </span><br>
+                                    <span> <b> Address: </b> {{ j.groupAddress }}</span><br>
+                                    <span> <b> ZipCode: </b> {{ j.groupZipCode }} </span><br>
+                                    <span> <b> PolicyNumber: </b> {{ j.policyNumber }} </span>
+                                    <!--<span>  <b> TotalMembers: </b> {{ j.members.length }}  </span>-->
+                                </div>
+
+                                <div style="text-align:right;width:20%;height:100%; vertical-align:middle">
+                                    <!--<span> <button class="btn btn-sm btn-outline-primary" (click)="editGroup(j.groupId,0)" style="background-color:#ffcb21;color:black">-->
+                                    <span ngbTooltip="Edit Group">
+                                        <span> <button class="btn btn-sm btn-outline-primary" (click)="editGroup(j.groupId,0)"
+                                                style="background-color:white;border-color: white" ngbToolTip="Edit Group">
+                                                <span class="editGroup"></span>
+                                            </button>
+                                        </span>
+                                    </span>
+                                    <span ngbTooltip="Delete Group">
+                                        <button class="btn btn-sm btn-outline-primary" (click)="editGroup(j.groupId,1)"
+                                            style="background-color:white;border-color: white">
+                                            <span class="deleteGroup"></span>
+                                        </button>
+                                    </span>
+                                    <span ngbTooltip="Manage Members">
+                                        <button class="btn btn-sm btn-outline-primary" routerLink="/members/{{ j.groupId }}"
+                                            style="background-color:white;border-color: white">
+                                            <span class="manageMember"></span>
+                                        </button>
+
+                                    </span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+
+                </div>
+            </ngb-accordion>
+        </div>
+    </div>
+
+</ng-template>
+
+<hr />
+<!--<button class="btn btn-sm btn-outline-primary" (click)="acc.toggle('toggle-1')">Toggle first</button>
+<button class="btn btn-sm btn-outline-primary" (click)="acc.toggle('toggle-2')">Toggle second</button>-->

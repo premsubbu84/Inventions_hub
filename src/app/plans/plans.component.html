@@ -1,0 +1,13 @@
+<div class="invention-creator">
+  <div class="row" style="margin:50px;width:15%">
+    <div class="col text-left">Select Plan : </div>
+    <div class="col text-left">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="ddDentalPlans" ngbDropdownToggle>{{selectedPlan}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="dropdown-item" *ngFor="let planItem of plansList"  (click)="ChangePlanOrder(planItem.PlanName)">{{ planItem.PlanName }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
